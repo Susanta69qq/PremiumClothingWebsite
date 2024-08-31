@@ -68,37 +68,36 @@ function MarqueeProducts() {
   );
 
   const mobileImgContainer = (
-    <>
-      <div>
-        <div className="relative">
-          <img
-            className="w-full h-full object-cover"
-            src="./images/left-side-image1.webp"
-            alt=""
-          />
-          <h5
-            className="absolute max-sm:top-2 text-[#E5E5E5] max-sm:text-[4vw] max-sm:leading-[5vw]
-             uppercase max-sm:px-[2vw] font-semibold"
-          >
-            Crafting Unique Narratives Through Limited <br /> Edition Drops
-          </h5>
-        </div>
-        <div className="relative">
-          <img
-            className="w-full h-full object-cover"
-            src="./images/left-side-image2.webp"
-            alt=""
-          />
-          <h5
-            className="absolute max-sm:top-2 text-[#E5E5E5] max-sm:text-[4vw] max-sm:leading-[5vw]
-             uppercase max-sm:px-[2vw] font-semibold"
-          >
-            The spirit of street culture with high- <br />
-            quality craftsmanship
-          </h5>
-        </div>
+    <div className="flex flex-col">
+      <div className="relative w-full h-auto">
+        <img
+          className="w-full h-auto object-cover"
+          src="./images/left-side-image1.webp"
+          alt=""
+        />
+        <h5
+          className="absolute top-2 left-2 text-[#E5E5E5] text-[3.7vw] leading-[5vw]
+           uppercase px-[2vw] font-semibold"
+        >
+          Crafting Unique Narratives Through Limited <br /> Edition Drops
+        </h5>
       </div>
-    </>
+
+      <div className="relative w-full h-auto">
+        <img
+          className="w-full h-auto object-cover"
+          src="./images/left-side-image2.webp"
+          alt=""
+        />
+        <h5
+          className="absolute top-2 left-2 text-[#E5E5E5] text-[3.7vw] leading-[5vw]
+           uppercase px-[2vw] font-semibold"
+        >
+          The spirit of street culture with high- <br />
+          quality craftsmanship
+        </h5>
+      </div>
+    </div>
   );
 
   return (

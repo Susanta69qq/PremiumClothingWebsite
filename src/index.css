@@ -3,13 +3,11 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: parabole;
-    src: url(../public/fonts/663e5d8c7147f013dd543516_p-q_f.ttf);
+  font-family: parabole;
+  src: url(../public/fonts/663e5d8c7147f013dd543516_p-q_f.ttf);
 }
 
 @font-face {
-    font-family: main;
-    src: url(../public/fonts/663e5d737a75bb2efe6a0efe_n-h_m.ttf);
+  font-family: main;
+  src: url(../public/fonts/663e5d737a75bb2efe6a0efe_n-h_m.ttf);
 }
-
-
