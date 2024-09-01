@@ -59,7 +59,7 @@ function MarqueeProducts() {
         </div>
         <h1
           className="text-black max-sm:text-[7vw] max-sm:leading-3 tracking-tight 
-        max-sm:px-[4vw] max-sm:font-semibold"
+        max-sm:px-[3.5vw] max-sm:font-semibold"
         >
           Expression on your own terms
         </h1>
