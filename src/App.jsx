@@ -7,8 +7,7 @@ import Join from "./components/home/Join";
 import ShopAll from "./components/home/ShopAll";
 import Faq from "./components/home/Faq";
 import Footer from "./components/home/Footer";
-import Contact from "./components/home/Contact";
-import Catalog from "./components/home/Catalog";
+import ProductBuyPage from "./components/home/ProductBuyPage";
 
 function App() {
   return (
@@ -21,8 +20,7 @@ function App() {
       <ShopAll />
       <Faq />
       <Footer />
-      <Contact />
-      <Catalog />
+      <ProductBuyPage />
     </div>
   );
 }
