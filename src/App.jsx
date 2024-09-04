@@ -20,7 +20,6 @@ function App() {
       <ShopAll />
       <Faq />
       <Footer />
-      <ProductBuyPage />
     </div>
   );
 }

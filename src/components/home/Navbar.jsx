@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import "remixicon/fonts/remixicon.css";
 
 function Navbar() {
@@ -87,6 +87,7 @@ function Navbar() {
           </>
         )}
       </nav>
+      
     </div>
   );
 }

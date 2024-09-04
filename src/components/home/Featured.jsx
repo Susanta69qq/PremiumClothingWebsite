@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { Link } from "react-router-dom";
 
 function Featured() {
   const [isMobile, setIsMobile] = useState(false);
@@ -177,11 +178,13 @@ function Featured() {
   ];
 
   const handleNextSlide = () => {
-    if (swiperRef.current && swiperRef.current.swiper) swiperRef.current.swiper.slideNext();
+    if (swiperRef.current && swiperRef.current.swiper)
+      swiperRef.current.swiper.slideNext();
   };
 
   const handlePrevSlide = () => {
-    if (swiperRef.current && swiperRef.current.swiper) swiperRef.current.swiper.slidePrev();
+    if (swiperRef.current && swiperRef.current.swiper)
+      swiperRef.current.swiper.slidePrev();
   };
 
   const mobileArrow = (
@@ -197,7 +200,8 @@ function Featured() {
 
   const mobileFeaturedProducts = (
     <div className="px-[2vw]">
-      <Swiper ref={swiperRef}
+      <Swiper
+        ref={swiperRef}
         slidesPerView={1}
         spaceBetween={10}
         onSlideChange={() => console.log("slide change")}
@@ -252,9 +256,11 @@ function Featured() {
             Featured
           </h1>
           <div className="max-sm:hidden">
-            <button className="text-white bg-[#3400D0] px-[3vw] py-[2vh] text-[0.8vw]">
-              All Products
-            </button>
+            <Link to={"/catalog"}>
+              <button className="text-white bg-[#3400D0] px-[3vw] py-[2vh] text-[0.8vw]">
+                All Products
+              </button>
+            </Link>
           </div>
           {isMobile ? mobileArrow : null}
         </div>
