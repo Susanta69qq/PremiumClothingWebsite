@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { CartContext } from "../../CartContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -106,13 +107,13 @@ const cartItems = [
     size: ["S", "M", "L", "XL", "XXL"],
     button: ["Buy Now", "Add to Cart"],
     images: {
-      images1: [
+      image1: [
         "images/classicblack.jpg",
         "images/classicblack2.jpg",
         "images/classicblack3.jpg",
         "images/classicblack4.jpg",
       ],
-      images2: [
+      image2: [
         "images/classicwhite.jpg",
         "images/classicwhite2.jpg",
         "images/classicwhite3.jpg",
@@ -212,49 +213,147 @@ const cartItems = [
   },
 ];
 
-
-
 function ProductBuyPage() {
   const imgRef = useRef(null);
   const containerRef = useRef();
   const { id } = useParams();
   const product = cartItems.find((item) => item.id === id);
-  
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 640);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const { addToCart } = useContext(CartContext);
 
   if (!product) {
     return <div>Product not found</div>;
   }
 
   useEffect(() => {
-    const imgHeight = imgRef.current ? imgRef.current.scrollHeight : 0;
-
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: "top top",
-      end: `+=${imgHeight}`,
-      pin: true,
-      scrub: true,
-    });
-
-    gsap.to(imgRef.current, {
-      yPercent: -100,
-      ease: "none",
-      scrollTrigger: {
+    if (!isMobile) {
+      ScrollTrigger.create({
         trigger: containerRef.current,
         start: "top top",
-        end: `+=${imgHeight}`,
+        end: "bottom bottom",
+        pin: true,
         scrub: true,
-      },
-    });
+      });
 
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
+      gsap.to(imgRef.current, {
+        yPercent: -100,
+        ease: "none",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: true,
+        },
+      });
+
+      return () => {
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      };
+    }
+  }, [isMobile]);
+
+  const mobileView = (
+    <div
+        className="product-page w-full bg-[#F1F1F1] px-[2vw] 
+    flex  max-sm:flex-col-reverse gap-[10vw] items-stretch justify-between overflow-hidden max-sm:mt-[6vh]"
+        style={{ paddingBottom: "10vh" }}
+      >
+        <div className="texts pt-[8vh] w-[50%] max-sm:w-full">
+          <div className="head leading-7">
+            <h1 className="font-[main] text-[2vw] max-sm:text-[6vw]">{product.productType}</h1>
+            <h5 className="font-[main] text-[2vw] max-sm:text-[6vw] text-[#6F6F6F]">
+              {product.price}
+            </h5>
+          </div>
+          <div className="description leading-4 mt-[2vh]">
+            <p className="text-[1vw] max-sm:text-[4vw] max-sm:leading-[5vw] w-[45vw] max-sm:w-full">{product.description}</p>
+          </div>
+          <div className="border border-dotted border-gray-300 mt-[4vh]"></div>
+          <div className="color mt-[1vh]">
+            <h5 className="font-[main] text-[1vw] max-sm:text-[4vw]">Color</h5>
+            <div className="flex gap-[0.25vw] pt-[1.5vh]">
+              {product.color.map((item, index) => (
+                <div key={index}>
+                  <button className="px-[1.2vw] max-sm:px-[4vw] py-[.7vw] max-sm:py-[1vh] bg-[#000] text-[#F1F1F1] 
+                  text-[.95vw] max-sm:text-[4vw]">
+                    {item}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="border border-dotted border-gray-300 mt-[4vh]"></div>
+          <div className="size mt-[1vh]">
+            <h5 className="font-[main] text-[1vw] max-sm:text-[4vw]">Size</h5>
+            <div className="flex gap-[0.25vw] max-sm:gap-[1vw] pt-[1.5vh]">
+              {product.size.map((s, index) => (
+                <div
+                  key={index}
+                  className="px-[1.5vw] py-[.7vw] bg-[#000] text-[#F1F1F1] text-[.95vw]
+                  max-sm:text-[4vw] max-sm:px-[4vw] max-sm:py-[1vh]"
+                >
+                  {s}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="buttons mt-[3vh] flex max-sm:flex-col gap-[.5vw] max-sm:gap-[1vh]">
+            {product.button.map((b, index) => (
+              <button
+                key={index}
+                onClick={() => addToCart(product)}
+                className={`px-[8vw] py-[1vw] max-sm:py-[3vw] bg-[#000] font-[main] 
+            text-[#F1F1F1] text-[.9vw] max-sm:text-[4vw] rounded-[.3vw]`}
+              >
+                {b}
+              </button>
+            ))}
+          </div>
+        </div>
+
+
+        <div className="images flex flex-row-reverse items-start gap-[.7vw] mt-[8vh] w-[50%] max-sm:w-full overflow-hidden">
+          <div className="largeImg flex flex-col gap-[1vw]">
+            {product.images.image1.map((image, index) => (
+              <img
+                key={`image1-${index}`}
+                src={`${import.meta.env.BASE_URL}${image}`}
+                alt={`Product image1 ${index}`}
+                className="max-w-[100%] object-cover rounded-[.5vw]"
+              />
+            ))}
+          </div>
+          <div className="smallImg flex flex-col gap-[.5vw] max-sm:hidden">
+            {product.images.image1.map((image, index) => (
+              <img
+                key={`image1-${index}`}
+                src={`${import.meta.env.BASE_URL}${image}`}
+                alt={`Product image1 ${index}`}
+                className="w-[20vw] object-cover rounded-[.2vw]"
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+  )
 
   return (
     <div>
-      <div
+      {isMobile ? mobileView : (
+        <div
         className="product-page w-full bg-[#F1F1F1] px-[2vw] 
     flex gap-[10vw] items-stretch justify-between overflow-hidden"
         style={{ paddingBottom: "10vh" }}
@@ -299,6 +398,8 @@ function ProductBuyPage() {
           <div className="buttons mt-[3vh] flex gap-[.5vw]">
             {product.button.map((b, index) => (
               <button
+                key={index}
+                onClick={() => addToCart(product)}
                 className={`px-[8vw] py-[1vw] bg-[#000] font-[main] 
             text-[#F1F1F1] text-[.9vw] rounded-[.3vw]`}
               >
@@ -330,6 +431,7 @@ function ProductBuyPage() {
           </div>
         </div>
       </div>
+      )}
     </div>
   );
 }

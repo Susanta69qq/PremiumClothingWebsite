@@ -72,35 +72,35 @@ function Featured() {
 
   const images = [
     {
-      id: 1,
+      id: "splat-t-shirt-blue-grass",
       image: "./images/featured1.jpg",
     },
     {
-      id: 2,
+      id: "monogram-t-shirt-persian-violet",
       image: "./images/featured2.jpg",
     },
     {
-      id: 3,
+      id: "classic-logo-t-shirt-white",
       image: "./images/featured3.jpg",
     },
     {
-      id: 4,
+      id: "classic-logo-t-shirt-black",
       image: "./images/featured4.jpg",
     },
     {
-      id: 5,
+      id: "splat-t-shirt-black",
       image: "./images/featured5.jpg",
     },
     {
-      id: 6,
+      id: "novelist-t-shirt-sugar-swizzzle",
       image: "./images/featured6.jpg",
     },
     {
-      id: 7,
+      id: "splat-t-shirt-white",
       image: "./images/featured7.jpg",
     },
     {
-      id: 8,
+      id: "monogram-t-shirt-frosty-green",
       image: "./images/featured8.jpg",
     },
   ];
@@ -269,49 +269,52 @@ function Featured() {
             mobileFeaturedProducts
           ) : (
             <Swiper
-              slidesPerView={4}
-              spaceBetween={5}
-              onSlideChange={() => console.log("slide change")}
-              onSwiper={(swiper) => console.log(swiper)}
-            >
-              {images.map((image, index) => (
-                <SwiperSlide
-                  className="mySwiper group ease-in-out duration-300 relative"
-                  key={image.id}
-                >
-                  <img
-                    className="w-full h-full object-cover"
-                    src={image.image}
-                    alt=""
-                  />
-                  <img
-                    className="w-full h-full object-cover absolute top-0 left-0 transition-opacity 
-                  duration-500 ease-in-out opacity-0 group-hover:opacity-100"
-                    src={hoverImages[index].pic}
-                    alt=""
-                  />
-                  <div
-                    className="imgText w-full bg-[#F1F1F1] px-[1vw] absolute bottom-[-10%] 
-                ease-in-out duration-500 group-hover:bottom-[0%]"
-                  >
-                    <h1 className="text-[0.8vw] uppercase pt-[1vh] font-semibold mb-[1vh]">
-                      {featuredDescriptions[index].name}
-                    </h1>
-                    <div className="flex justify-between items-center pb-[2vh]">
-                      <h1 className="text-[0.8vw] font-semibold">
-                        {featuredDescriptions[index].type}
-                      </h1>
-                      <h1 className="text-[0.8vw] font-semibold">
-                        {featuredDescriptions[index].price}
-                      </h1>
-                    </div>
-                    <div className="pb-2">
-                      <div className="color">{colorOptions[index]}</div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+  slidesPerView={4}
+  spaceBetween={5}
+  onSlideChange={() => console.log("slide change")}
+  onSwiper={(swiper) => console.log(swiper)}
+>
+  {images.map((image, index) => (
+    <SwiperSlide
+      className="mySwiper group ease-in-out duration-300 relative"
+      key={image.id}
+    >
+      <Link to={`/product/${image.id}`}>
+        <img
+          className="w-full h-full object-cover"
+          src={image.image}
+          alt=""
+        />
+        <img
+          className="w-full h-full object-cover absolute top-0 left-0 transition-opacity 
+            duration-500 ease-in-out opacity-0 group-hover:opacity-100"
+          src={hoverImages[index].pic}
+          alt=""
+        />
+        <div
+          className="imgText w-full bg-[#F1F1F1] px-[1vw] absolute bottom-[-10%] 
+            ease-in-out duration-500 group-hover:bottom-[0%]"
+        >
+          <h1 className="text-[0.8vw] uppercase pt-[1vh] font-semibold mb-[1vh]">
+            {featuredDescriptions[index].name}
+          </h1>
+          <div className="flex justify-between items-center pb-[2vh]">
+            <h1 className="text-[0.8vw] font-semibold">
+              {featuredDescriptions[index].type}
+            </h1>
+            <h1 className="text-[0.8vw] font-semibold">
+              {featuredDescriptions[index].price}
+            </h1>
+          </div>
+          <div className="pb-2">
+            <div className="color">{colorOptions[index]}</div>
+          </div>
+        </div>
+      </Link>
+    </SwiperSlide>
+  ))}
+</Swiper>
+
           )}
         </div>
       </div>
