@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function LandingPage() {
   const [isMobile, setIsMobile] = useState(false);
@@ -19,7 +20,9 @@ function LandingPage() {
     <div className="w-full h-screen relative">
       <img
         className="w-full h-full object-cover"
-        src={isMobile ? "./images/heroimagemobile.jpg" : "./images/heroimage.webp"}
+        src={
+          isMobile ? "./images/heroimagemobile.jpg" : "./images/heroimage.webp"
+        }
         alt=""
       />
       <div className="w-full h-full bg-black absolute top-0 opacity-10"></div>
@@ -28,12 +31,14 @@ function LandingPage() {
           Embrace what <br />
           makes You - You
         </h1>
-        <button
-          className="border-[1px] border-white px-[2.7vw] max-sm:px-[13vw] py-[1.7vh] text-[0.8vw] max-sm:text-[4vw]
+        <Link to={"/catalog"}>
+          <button
+            className="border-[1px] border-white px-[2.7vw] max-sm:px-[13vw] py-[1.7vh] text-[0.8vw] max-sm:text-[4vw]
          font-semibold max-sm:font-bold hover:bg-[#3400D0] max-sm:tracking-tighter hover:border-opacity-0 transition-all"
-        >
-          Discover now
-        </button>
+          >
+            Discover now
+          </button>
+        </Link>
       </div>
     </div>
   );

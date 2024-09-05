@@ -268,7 +268,7 @@ function ProductBuyPage() {
   const mobileView = (
     <div
         className="product-page w-full bg-[#F1F1F1] px-[2vw] 
-    flex  max-sm:flex-col-reverse gap-[10vw] items-stretch justify-between overflow-hidden max-sm:mt-[6vh]"
+    flex  max-sm:flex-col-reverse gap-[10vw] max-sm:gap-[1vh] items-stretch justify-between overflow-hidden max-sm:mt-[0vh]"
         style={{ paddingBottom: "10vh" }}
       >
         <div className="texts pt-[8vh] w-[50%] max-sm:w-full">

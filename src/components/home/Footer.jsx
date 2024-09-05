@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function Footer() {
   const [isMobile, setIsMobile] = useState(false);
@@ -14,8 +15,6 @@ function Footer() {
 
     return () => window.removeEventListener("resize", resizeHandler);
   }, []);
-
-
 
   return (
     <div className="w-full">
@@ -33,12 +32,14 @@ function Footer() {
               Embrace the essence of Le Flair Studios <br /> and become a part
               of a movement that <br /> celebrates individuality.
             </h1>
-            <button
-              className="text-[#F1F1F1] text-[0.8vw] max-sm:text-[4vw] border-[1px] max-sm:border-[1px] 
+            <Link to={"/catalog"}>
+              <button
+                className="text-[#F1F1F1] text-[0.8vw] max-sm:text-[4vw] border-[1px] max-sm:border-[1px] 
             border-[#F1F1F1] px-[3vw] max-sm:px-[13vw] py-[2vh]"
-            >
-              Shop All
-            </button>
+              >
+                Shop All
+              </button>
+            </Link>
           </div>
         </div>
         <div className="absolute bottom-0 right-0 max-sm:left-0 px-[2vw] py-[4vh]">
@@ -79,7 +80,11 @@ function Footer() {
       </div>
       <div className="w-full bg-[#010101]">
         <div className="mb-[10vh] max-sm:mb-[5vh] px-[2vw] py-[6vh] max-sm:py-[1vh]">
-          <img className="w-[10vw] max-sm:w-[35vw]" src="./images/logo.svg" alt="" />
+          <img
+            className="w-[10vw] max-sm:w-[35vw]"
+            src="./images/logo.svg"
+            alt=""
+          />
         </div>
         <div className="features flex max-sm:flex-col justify-between items-center max-sm:items-start relative">
           <div className="absolute w-[100%] h-[100%] border-[1px] border-[#F1F1F1] border-dotted border-opacity-50"></div>
@@ -105,7 +110,9 @@ function Footer() {
               className="flex flex-col gap-[5vh] px-[2vw] py-[2vh] 
             border-[#F1F1F1] max-sm:border-none border-r border-dotted border-opacity-30"
             >
-              <h5 className="text-[#fff] text-[1.1vw] max-sm:text-[4vw]">{feature.title}</h5>
+              <h5 className="text-[#fff] text-[1.1vw] max-sm:text-[4vw]">
+                {feature.title}
+              </h5>
               <p className="text-[#F1F1F1] w-[28vw] max-sm:w-[100%] text-[0.7vw] max-sm:text-[3.5vw]">
                 {feature.content}
               </p>
@@ -136,7 +143,9 @@ function Footer() {
           },
         ].map((e, index) => (
           <div key={index} className="flex flex-col gap-[2vh]">
-            <h5 className="text-[#fff] text-[0.9vw] max-sm:text-[4vw]">{e.title}</h5>
+            <h5 className="text-[#fff] text-[0.9vw] max-sm:text-[4vw]">
+              {e.title}
+            </h5>
             <div className="flex flex-col gap-[0.3vh]">
               {e.content.map((cont, index) => (
                 <a
@@ -166,14 +175,22 @@ function Footer() {
             flex items-center justify-center 
           rounded-full hover:opacity-80"
           >
-            <img className="w-[1.5vw] max-sm:w-[4vw]" src="./images/facebookicon.svg" alt="" />
+            <img
+              className="w-[1.5vw] max-sm:w-[4vw]"
+              src="./images/facebookicon.svg"
+              alt=""
+            />
           </div>
           <div
             className="bg-[#A9A9A9] p-[0.5vw] w-[3vw] max-sm:w-[8vw] h-[3vw] max-sm:h-[8vw] 
             flex items-center justify-center 
           rounded-full hover:opacity-80"
           >
-            <img className="w-[1.5vw] max-sm:w-[4vw]" src="./images/youtubeicon.svg" alt="" />
+            <img
+              className="w-[1.5vw] max-sm:w-[4vw]"
+              src="./images/youtubeicon.svg"
+              alt=""
+            />
           </div>
         </div>
       </div>

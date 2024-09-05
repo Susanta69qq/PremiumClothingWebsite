@@ -7,7 +7,6 @@ import Join from "./components/home/Join";
 import ShopAll from "./components/home/ShopAll";
 import Faq from "./components/home/Faq";
 import Footer from "./components/home/Footer";
-import ProductBuyPage from "./components/home/ProductBuyPage";
 
 function App() {
   return (

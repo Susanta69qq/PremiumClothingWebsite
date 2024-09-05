@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,9 +60,11 @@ function ShopAll() {
           makes you special. <br /> When you choose to wear Le Flair Studios,
           you <br /> choose yourself.
         </h5>
-        <button className="px-[12vw] py-[1.5vh] rounded-[0.2vw] bg-[#3400D0] text-[#FFFFFF] text-[4vw] mt-[2vh]">
-          Shop All
-        </button>
+        <Link to={"/catalog"}>
+          <button className="px-[12vw] py-[1.5vh] rounded-[0.2vw] bg-[#3400D0] text-[#FFFFFF] text-[4vw] mt-[2vh]">
+            Shop All
+          </button>
+        </Link>
       </div>
     </div>
   );
@@ -105,9 +108,11 @@ function ShopAll() {
                 and what makes you special. <br /> When you choose to wear Le
                 Flair Studios, you choose yourself.
               </h5>
-              <button className="px-[4vw] py-[2.2vh] rounded-[0.2vw] bg-[#3400D0] text-[#FFFFFF] text-[0.8vw] mt-[4vh]">
-                Shop All
-              </button>
+              <Link to={"/catalog"}>
+                <button className="px-[4vw] py-[2.2vh] rounded-[0.2vw] bg-[#3400D0] text-[#FFFFFF] text-[0.8vw] mt-[4vh]">
+                  Shop All
+                </button>
+              </Link>
             </div>
           </div>
         )}

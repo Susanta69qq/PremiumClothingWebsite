@@ -110,7 +110,7 @@ function Catalog() {
   const sortedImages = sortImages([...images], sortOption);
 
   return (
-    <div className="w-full min-h-screen bg-[#E0E0E0] relative">
+    <div className="w-full min-h-screen bg-[#E0E0E0] relative mt-[4vh]">
       <div
         className="header py-[6vh] max-sm:py-[3vh] flex max-sm:flex-col gap-[54vw] max-sm:gap-[0] 
         max-sm:items-start items-center text-[4vw] max-sm:text-[14vw] font-[Parabole]
